@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -16,5 +16,16 @@ export class AppController {
   @Get('/route/')
   hello() {
     return 'with NestJS';
+  }
+  @Get('products/:productId')
+  getProduct(@Param('productId') productId: string) {
+    return `product ${productId}`;
+  }
+  @Get('categories/:categoryId/products/:productId')
+  getCategory(
+    @Param('categoryId') categoryId: string,
+    @Param('productId') productId: string,
+  ) {
+    return `product ${productId} and ${categoryId}`;
   }
 }
