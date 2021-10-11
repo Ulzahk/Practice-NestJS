@@ -35,7 +35,7 @@ export class ProductsService {
     return newProduct;
   }
   update(id: number, payload: any) {
-    const product = this.findOne(+id);
+    const product = this.findOne(id);
     if (!product) {
       throw new NotFoundException(`Product #${id} not found`);
     }
@@ -47,8 +47,7 @@ export class ProductsService {
     return null;
   }
   delete(id: number) {
-    const productIndex = this.products.findIndex((item) => item.id === +id);
-    console.log(productIndex);
+    const productIndex = this.products.findIndex((item) => item.id === id);
     if (productIndex === -1) {
       throw new NotFoundException(`Product #${id} not found`);
     }
