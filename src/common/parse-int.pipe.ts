@@ -8,10 +8,10 @@ import {
 @Injectable()
 export class ParseIntPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
-    const val = parseInt(value, 10);
-    if (isNaN(val)) {
+    const integerValue = parseInt(value, 10);
+    if (isNaN(integerValue)) {
       throw new BadRequestException(`${value} is not a number`);
     }
-    return value;
+    return integerValue;
   }
 }
